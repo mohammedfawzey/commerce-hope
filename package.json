@@ -1,0 +1,51 @@
+{
+  "name": "commerce-hope",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/pwa": "^3.3.5",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "core-js": "^3.25.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.4.0",
+    "helmet": "^6.0.1",
+    "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.1",
+    "nodemailer": "^6.8.0",
+    "nuxt": "^2.15.8",
+    "vue": "^2.7.10",
+    "vue-server-renderer": "^2.7.10",
+    "vue-slick": "^1.2.0",
+    "vue-slick-carousel": "^1.0.6",
+    "vue-template-compiler": "^2.7.10",
+    "vue-toastification": "^1.7.14",
+    "vueperslides": "^2.16.0",
+    "vuetify": "^2.6.10",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
+    "@vue/test-utils": "^1.3.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^29.1.2",
+    "jest": "^29.1.2",
+    "jest-environment-jsdom": "^29.1.2",
+    "sass": "^1.57.1",
+    "sass-loader": "^10.4.1",
+    "vue-jest": "^3.0.4"
+  }
+}

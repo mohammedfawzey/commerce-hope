@@ -1,0 +1,34 @@
+@for $i from 0 through 100 {
+
+    // gap 
+    .gap-#{$i} {
+        gap:0px #{$i}px !important;
+    }
+
+    // font-s
+    .font-s-#{$i} {
+        font-size:#{$i}px !important;
+    }
+}
+
+// font-weight
+@for $i from 0 through 10 {
+    .font-w-#{$i * 100} {
+        font-weight: $i * 100 !important;
+    }
+}
+
+
+
+.arrow-top {
+    &::after {
+        $borderSize: 4px;
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -$borderSize*2);
+        border: $borderSize solid transparent;
+        border-bottom-color: black;
+    }
+}

@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.text-small {
+  font-size: 8.7px !important;
+  color: rgb(33, 43, 54) !important;
+}
+.text--xsmall {
+  font-size: 10px !important;
+}
+.text-m-small {
+  font-size: 10px !important;
+  color: rgb(99, 115, 129) !important;
+}
+.line-1 {
+  line-height: 1 !important;
+}
+a,
+a > * {
+  text-decoration: none;
+  color: black;
+}
+.v-box-shadow {
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.08) !important;
+}
+.v-box-shadow-second {
+  box-shadow: rgb(145 158 171 / 20%) 0px 11px 15px -7px,
+    rgb(145 158 171 / 14%) 0px 24px 38px 3px,
+    rgb(145 158 171 / 12%) 0px 9px 46px 8px !important;
+}
+.v-scrollbar-menu::-webkit-scrollbar {
+  height: 8px !important;
+}
+.v-scrollbar::-webkit-scrollbar {
+  width: 7px !important;
+}
+.v-scrollbar::-webkit-scrollbar-thumb {
+  background: #ededed;
+  border-radius: 4px;
+}
+.v-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: #c7c7cd !important;
+  border-radius: 4px;
+}
+.v-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  /* box-shadow: grey 0px 0px 1px inset !important; */
+}
+.v-scrollbar-menu::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: grey 0px 0px 1px inset !important;
+}
+.v-scrollbar-menu::-webkit-scrollbar-thumb {
+  /* background: rgb(0, 125, 252); */
+  background: rgb(13, 68, 251);
+  border-radius: 4px;
+}
+.v-scrollbar-menu::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 59, 118);
+  border-radius: 4px;
+}
+.pointer {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  /* background: rgb(0, 125, 252); */
+  background: rgb(13, 68, 251);
+  border-radius: 8px;
+}
+.text-color {
+  color: rgb(99, 115, 129) !important;
+}
+.btn-custom-border-color {
+  border-color: rgba(145, 158, 171, 0.32) !important;
+}
+.v-tabs--vertical > .v-tabs-bar .v-tabs-bar__content {
+  border-right: 1px solid rgba(145, 158, 171, 0.24) !important;
+}
+.bg-shape {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(0, 125, 252),
+    rgb(1, 71, 140) 120%
+  );
+}
+.fill-width {
+  width: 100% !important;
+}
+.toolbar_content_pa_0 .v-toolbar__content {
+  padding: 0px !important;
+}
+.dense-list-item {
+  min-height: 25px !important;
+}
+.x-small-list-item .v-list-item__content {
+  padding: 0px !important;
+}
+.v-overlay.v-overlay--active {
+  backdrop-filter: blur(6px);
+  /* backdrop-filter: blur(2px) !important; */
+  /* opacity: 0.2; */
+}
+.v-overlay.v-overlay--active.a-carousel {
+  backdrop-filter: blur(3px) !important;
+}
+.v-overlay__scrim {
+  backdrop-filter: blur(2px) !important;
+  opacity: 0 !important;
+  /* opacity: 0.1 !important; */
+}
+
+.text-head {
+  color: rgb(33, 43, 54) !important;
+  line-height: 1.1 !important;
+}
+.text-subhead {
+  color: rgb(99, 115, 129) !important;
+  line-height: 1.5;
+}
+.v-btn-shadow {
+  box-shadow: rgb(13 68 251 / 24%) 0px 8px 16px 0px !important;
+}
+.v-btn-shadow:hover {
+  box-shadow: none !important;
+}
+.zoom-img-on-hover .v-image__image {
+  transition: 0.3s all;
+}
+.zoom-img-on-hover:hover .v-image__image {
+  transform: scale(1.07);
+  filter: blur(2px);
+  /* transform: scale(1.2) rotate(45deg); */
+}
+.v-breadcrumbs__divider {
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+}
+.image-border {
+  border: 1px solid rgb(196, 205, 213) !important;
+}
+.border-color {
+  border-color: rgb(196, 205, 213) !important;
+  border: 1px solid rgb(196, 205, 213) !important;
+}
+.custom-line-height {
+  /* line-height: 0.7 !important; */
+  padding: 3px 9px 5px 9px !important;
+  line-height: 0.6 !important;
+}
+.custom-prepend-icon .v-input__prepend-inner {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  margin-inline: auto !important;
+  width: 85px;
+}
+
+.custom-list-height {
+  max-height: 57px !important;
+}
+
+.v-skeleton-loader__list-item-avatar-two-line.v-skeleton-loader__bone {
+  background-color: transparent !important;
+}
+
+.v-btn-boxshadow {
+  box-shadow: grey 0px 0px 1px inset !important;
+}

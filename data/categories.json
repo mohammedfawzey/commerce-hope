@@ -1,0 +1,26 @@
+[
+    {
+        "title": "bags",
+        "sub": ["labtop bag", "ladies bag", "school bag"]
+    },
+    {
+        "title": "shoes",
+        "sub": ["snow shoes", "casual shoes", "adidas shoes","nike shoes", "breathable shoes"]
+    },
+    {
+        "title": "shirts",
+        "sub": ["dress shirt","t-shirt", "tuxedo shirt/formal shirt","jersey shirt"]
+    },
+    {
+        "title": "makeup",
+        "sub":["secret concealer", "ultra shine lip gel","lipstick"]
+    },
+    {
+        "title": "sports",
+        "sub":["cricket bat", "football", "basketball", "boxing"]
+    },
+    {
+        "title": "electronics",
+        "sub": ["laptops","mobiles","headphones","camra"]
+    }
+]

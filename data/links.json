@@ -1,0 +1,22 @@
+[
+  {
+    "title": "home",
+    "route": "/"
+  },
+  {
+    "title": "categories",
+    "route": "/products"
+  },
+  {
+    "title": "men",
+    "route": "/products"
+  },
+  {
+    "title": "women",
+    "route": "/products"
+  },
+  {
+    "title": "kids",
+    "route": "/products"
+  }
+]
