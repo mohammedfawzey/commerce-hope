@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[38],{776:function(n,e,t){"use strict";t.r(e);var c={},o=t(23),component=Object(o.a)(c,(function(){return(0,this._self._c)("div",[this._v("change password")])}),[],!1,null,"5dbe472d",null);e.default=component.exports}}]);

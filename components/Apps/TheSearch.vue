@@ -7,12 +7,14 @@
     :fullscreen="$vuetify.breakpoint.xsOnly"
   >
     <!-- min-height="400" -->
+    <!-- max-height="475" -->
     <v-card
       color="#f3f4f8"
       max-width="600"
       flat
-      outlined
-      class="pa-0 ma-0 rounded-lg border-color d-flex flex-column"
+      :outlined="$vuetify.breakpoint.smAndUp"
+      :class="{ 'border-color': $vuetify.breakpoint.smAndUp }"
+      class="pa-0 ma-0 rounded-lg d-flex flex-column"
     >
       <!-- search -->
       <div class="search_input">
@@ -53,7 +55,7 @@
         </v-text-field>
       </div>
       <!-- result -->
-      <!-- {{C_items}} -->
+      <!-- max-height="100" -->
       <v-sheet
         max-height="400"
         height="400"
@@ -62,7 +64,7 @@
       >
         <v-card-text class="px-2 mt-2 py-0">
           <v-list color="transparent" v-if="!loaded && C_items.length >= 1">
-            <template v-for="itemInd in 6">
+            <template v-for="itemInd in C_items.slice(0, 6).length">
               <v-skeleton-loader
                 type="list-item-avatar-two-line"
                 min-height="57"
@@ -84,9 +86,8 @@
                   <v-list-item-icon style="height: 40px" class="mr-3">
                     <v-avatar size="40">
                       <v-img
-                        :src="
-                          require(`@/assets/imgs/home/c-top-collections/${item.img}.png`)
-                        "
+                        :src="require(`@/assets/imgs/products/${item.img}.png`)"
+                        :lazy-src="require(`@/assets/imgs/products/${item.img}.png`)"
                         height="40"
                         width="40"
                         aspect-ratio="1"
@@ -109,6 +110,7 @@
           </v-list>
           <v-img
             :src="require('@/assets/imgs/no-data.svg')"
+            :lazy-src="require('@/assets/imgs/no-data.svg')"
             v-if="C_items.length <= 0 && loaded"
             max-height="calc(400px - 8px)"
           ></v-img>
@@ -130,7 +132,7 @@
 </template>
 
 <script>
-import products from "~/data/products.json";
+import products from "~/data/products2.json";
 export default {
   data: () => ({
     items: products,
@@ -158,20 +160,11 @@ export default {
       if (this.timer) clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         this.loaded = true;
-        // console.log("this.$refs.search", this.$refs.search);
-        // console.log("this.$refs.search", this.$refs.search._data.isFocused);
       }, this.time);
     },
     redirectToTheProduct(productId) {
       this.$router.push({ path: `/products/${productId}` });
       this.active = false;
-    },
-    focusInput() {
-      this.$nextTick(() => {
-        if (!this.$refs.search) return;
-        this.$refs.search.focus();
-        console.log("focus");
-      });
     },
   },
   watch: {

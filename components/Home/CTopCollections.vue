@@ -15,14 +15,20 @@
         sm="6"
         md="4"
         lg="3"
-        v-for="(item, itemInd) in items.slice(0,6)"
+        v-for="(item, itemInd) in items.slice(0, 6)"
         :key="itemInd"
       >
         <BaseCardItem :item="item" />
       </v-col>
     </v-row>
     <div class="view-all d-flex justify-end mt-2">
-      <v-btn class="text-capitalize font-w-600" nuxt to="/products" color="primary darken-2" text>
+      <v-btn
+        class="text-capitalize font-w-600"
+        nuxt
+        to="/products"
+        color="primary darken-2"
+        text
+      >
         <span>view all</span>
         <v-icon right size="25">mdi-chevron-right</v-icon>
       </v-btn>
@@ -43,7 +49,7 @@
 </template>
 
 <script>
-import products from "~/data/products.json";
+import products from "~/data/products2.json";
 export default {
   data: () => ({
     items: products,

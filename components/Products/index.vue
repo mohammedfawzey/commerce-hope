@@ -3,13 +3,13 @@
     <v-main> -->
   <!-- <section id="products">The Products</section> -->
   <v-container fluid>
-    <v-row>
-      <v-col md="4" lg="3" v-if="$vuetify.breakpoint.mdAndUp">
+    <v-row no-gutters>
+      <v-col md="4" lg="3" class="hidden-sm-and-down">
         <ProductsAFilter />
       </v-col>
       <v-col md="8" lg="9">
         <!-- <v-sheet min-height="2000px" color="transparent"> -->
-          <ProductsBResults />
+        <ProductsBResults />
         <!-- </v-sheet> -->
       </v-col>
     </v-row>
@@ -17,11 +17,3 @@
   <!-- </v-main> -->
   <!-- </v-app> -->
 </template>
-
-<script>
-
-export default {};
-</script>
-
-<style lang="scss" scoped>
-</style>

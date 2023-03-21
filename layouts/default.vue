@@ -28,9 +28,7 @@ export default {
   methods: {
     async auth() {
       try {
-        console.log("before get");
         const result = await this.$axios.get("/api/v1/auth/me");
-        console.log("result########################", result);
       } catch (err) {
         this.$store.commit("M_setUserAuth", false);
         this.$store.commit("M_setUser", null);

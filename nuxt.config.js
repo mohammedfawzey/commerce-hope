@@ -86,7 +86,9 @@ export default {
       lang: "en",
     },
   },
-
+  loading: {
+    continuous: true,
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ["~/assets/variables.scss"],

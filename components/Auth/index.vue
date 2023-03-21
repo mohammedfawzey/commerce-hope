@@ -253,32 +253,26 @@ export default {
         let result = await this.$auth.loginWith("local", {
           data: this.C_userLoginInfo,
         });
-        console.log(result);
         this.isSubmitBtnClicked = false;
       } catch (err) {
         this.isSubmitBtnClicked = false;
-        console.log(err);
       }
       // try {
       //   await this.$axios
       //     .post("/api/v1/auth/login", this.C_userLoginInfo)
       //     .then((result) => {
-      //       // console.log("the_result", result);
       //       this.$store.commit("M_setUserAuth", true);
       //       this.$store.commit("M_setUser", result.data.user);
       //     });
       // } catch (err) {
       //   this.$store.commit("M_setUserAuth", false);
       //   this.$store.commit("M_setUser", null);
-      //   console.log("err", err);
       // }
       // email && password
       // const userInfo = {email:this.email,password:this.password}
       //
-      // console.log('user info',this.userInfo)
     },
     M_register() {
-      console.log("register");
       // first|last name | gender | phone | email | password
       // const userInfo
     },

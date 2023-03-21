@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined class="pa-3 text-center rounded-lg mx-auto v-box-shadow">
+  <v-card outlined class="px-3 py-4 text-center rounded-lg mx-auto border-color" flat>
     <v-btn color="primary darken-2" fab depressed>
       <v-icon>{{ item.icon }}</v-icon>
     </v-btn>

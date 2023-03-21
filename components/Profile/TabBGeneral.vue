@@ -150,7 +150,6 @@ export default {
     openFileInput() {
       const img = document.querySelector("#image");
       img.click();
-      // console.log("img",img)
     },
   },
 };

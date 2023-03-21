@@ -91,14 +91,10 @@ export default {
       this.$router.push({ path: "/auth/login" });
     },
   },
-  computed: {
-    // user() {
-    //   const user = this.$store.state.auth.user;
-    //   if (!user) return { fullName: "", email: "" };
-    //   const fullName = user.firstName + " " + user.lastName;
-    //   const email = user.email;
-    //   return { fullName, email };
-    // },
+  watch: {
+    active(value) {
+      this.MX_toggleOverflowBody({ active: value });
+    },
   },
 };
 </script>

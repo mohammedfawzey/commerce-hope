@@ -6,56 +6,64 @@
   >
     <v-row>
       <!-- The_image -->
-      <v-col cols="12" md="5" class="d-flex flex-column justify-space-around">
-        <!-- {{ C_item.img }} -->
-        <div class="the_image">
-          <v-img
-            max-height="315"
-            :src="
-              require(`@/assets/imgs/home/c-top-collections/${
-                C_item.img || 3
-              }.png`)
-            "
-            contain
-            aspect-ratio="1"
-            width="315"
-            class="image-border rounded-xl mx-auto"
-          >
-            <v-card-text>
-              <v-chip label small color="error lighten-5">
-                <span
-                  class="
-                    font-weight-bold
-                    text-uppercase
-                    error--text
-                    text--darken-2
-                  "
-                  >sale</span
-                >
-              </v-chip>
-            </v-card-text>
-          </v-img>
-        </div>
+      <v-col cols="12" md="6" class="d-flex flex-column gap-15">
+        <!-- <div
+          class="the_image mx-auto"
+          :style="[
+            $vuetify.breakpoint.smAndDown
+              ? { 'max-width': '66.6667%' }
+              : { 'max-width': '85.6667%' },
+          ]"
+        > -->
+        <!-- contain -->
+        <!-- width="315" -->
+        <!-- max-height="315" -->
+        <!-- aspect-ratio="0.6728571428571428" -->
+        <v-img
+          aspect-ratio="1"
+          class="image-border rounded-lg mx-auto"
+          :src="require(`@/assets/imgs/products/${C_item.img || 3}.png`)"
+          :max-width="$vuetify.breakpoint.smAndDown ? '66.6667%' : '85.6667%'"
+          width="100%"
+          max-height="534"
+          :lazy-src="require(`@/assets/imgs/products/${C_item.img || 3}.png`)"
+        >
+          <!-- max-height="66.6667%" -->
+          <!-- max-height="534"
+          max-width="534" -->
+          <!-- contain -->
+          <v-card-text>
+            <v-chip label small color="error lighten-5">
+              <span
+                class="
+                  font-weight-bold
+                  text-uppercase
+                  error--text
+                  text--darken-2
+                "
+                >sale</span
+              >
+            </v-chip>
+          </v-card-text>
+        </v-img>
+        <!-- </div> -->
         <div class="mini-images mt-3 d-flex align-center justify-center">
           <div class="box-image">
             <v-img
               v-ripple
-              :src="
-                require(`@/assets/imgs/home/c-top-collections/${
-                  C_item.img || 1
-                }.png`)
-              "
+              :src="require(`@/assets/imgs/products/${C_item.img || 1}.png`)"
+              :lazy-src="require(`@/assets/imgs/products/${C_item.img || 1}.png`)"
               class="active-mini-image pointer rounded-lg"
-              contain
               width="60"
               aspect-ratio="1"
             ></v-img>
-              <!-- width="72" -->
+            <!-- contain -->
+            <!-- width="72" -->
           </div>
         </div>
       </v-col>
 
-      <v-col cols="12" md="7">
+      <v-col cols="12" md="6">
         <div class="col-body pb-md-16">
           <div class="text-body-1 blue-grey--text font-weight-regular">
             Bubble Bath
@@ -76,8 +84,7 @@
                 readonly
               ></v-rating>
               <span class="text-caption text-sm-body-2">{{ C_item.rate }}</span>
-              <span
-                class="text-body-2 text-sm-body-1 indigo--text text--darken-2"
+              <span class="text-body-2 font-w-400 indigo--text text--darken-2"
                 >Reviews</span
               >
             </div>
@@ -118,9 +125,9 @@
           <!-- colors -->
           <div class="colors d-flex align-center justify-space-between">
             <div class="text-body-2 text-sm-body-1 font-w-600">Color:</div>
-            <div class="colors-controller">
+            <div class="colors-controller" style="max-width: calc(100% - 60px)">
+              <!-- style="width: 195px" -->
               <v-btn-toggle
-                style="width: 195px"
                 dense
                 v-model="activeColor"
                 mandatory
@@ -179,13 +186,12 @@
           <!-- size -->
           <div class="size my-2 d-flex align-center justify-space-between">
             <div class="text-body-2 text-sm-body-1 font-w-600">Size:</div>
-            <div class="size-controller">
+            <div class="size-controller" style="max-width: calc(100% - 60px)">
               <v-chip-group
                 active-class="primary darken-2"
                 v-model="activeSize"
                 center-active
                 mandatory
-                style="width: 195px; max-width: 195px"
               >
                 <v-chip
                   label
@@ -258,7 +264,7 @@
                 <span class="text-capitalize">buy now</span>
               </v-btn>
             </div>
-            <div class="box hidden-sm-and-down"  v-if="!dialog">
+            <div class="box hidden-sm-and-down" v-if="!dialog">
               <v-tooltip
                 transition="slide-y-reverse-transition"
                 open-delay="750"
@@ -268,7 +274,12 @@
                 bottom
               >
                 <template #activator="{ on, attrs }">
-                  <v-btn color="rgb(223, 227, 232)" v-on="on" class="rounded-lg" v-bind="attrs">
+                  <v-btn
+                    color="rgb(223, 227, 232)"
+                    v-on="on"
+                    class="rounded-lg"
+                    v-bind="attrs"
+                  >
                     <v-icon>mdi-heart-outline</v-icon>
                   </v-btn>
                 </template>

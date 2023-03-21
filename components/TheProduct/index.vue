@@ -2,15 +2,15 @@
   <v-app style="background-color: #f3f4f8">
     <v-main class="pt-10 pb-0">
       <section id="product-detail">
-        <v-container>
+        <v-container :fluid="$vuetify.breakpoint.mdAndDown">
           <!-- header -->
           <div class="product_detail-header">
-            <div
+            <v-list-item-title
               class="text-h6 text-sm-h5 text-md-h4 text-head font-weight-bold"
             >
               {{ C_item["title"] }}
-            </div>
-            <v-breadcrumbs :items="C_path">
+            </v-list-item-title>
+            <v-breadcrumbs  :items="C_path">
               <template #divider>
                 <v-icon small class="px-0">mdi-chevron-right</v-icon>
               </template>
@@ -19,17 +19,20 @@
                   :disabled="item.disabled"
                   nuxt
                   :to="item.route"
+                  class="custom_breadcrumbs_width pa-1"
                   link
                 >
-                  <span class="text-caption">{{ item.text }}</span>
+                  <v-list-item-title class="text-caption">
+                    {{ item.text }}
+                  </v-list-item-title>
                 </v-breadcrumbs-item>
               </template>
             </v-breadcrumbs>
           </div>
           <!-- theProduct -->
-          <AppsTheCardItemContent :C_item="C_item"/>
+          <AppsTheCardItemContent :C_item="C_item" />
           <!-- Product_tabs -->
-          <TheProductTabs :C_item="C_item" class="mt-4"/>
+          <TheProductTabs :C_item="C_item" class="mt-4" />
           <!-- Product_Services -->
           <div class="product_services mt-8">
             <TheProductServices />
@@ -41,7 +44,7 @@
 </template>
 
 <script>
-import products from "~/data/products.json";
+import products from "~/data/products2.json";
 export default {
   data: () => ({
     products,

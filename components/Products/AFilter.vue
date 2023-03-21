@@ -1,12 +1,17 @@
 <template>
   <v-card
-    outlined
-    class="sticky-card card-border v-box-shadow rounded-lg mx-auto"
+    class="mx-auto"
+    :class="{
+      'sticky-card card-border rounded-lg v-box-shadow':
+        $vuetify.breakpoint.mdAndUp,
+    }"
+    :outlined="$vuetify.breakpoint.mdAndUp"
+    flat
     max-width="315"
   >
     <!-- header -->
     <v-card-text
-      :class="{ 'pt-3': isDialog }"
+      :class="{ 'pt-3 pl-2': isDialog }"
       class="d-flex align-center justify-space-between"
     >
       <div class="filter-header d-flex align-center justify-center">
@@ -28,7 +33,7 @@
         style="min-height: 40px"
       >
         <v-tooltip
-          v-if="mutation >= 1"
+          v-if="C_resetFilterStatus"
           color="black"
           content-class="rounded-lg text--caption pa-2 custom-line-height arrow-top"
           open-delay="750"
@@ -72,7 +77,7 @@
             small
             color="primary darken-3"
             class="rounded-lg"
-            @click="genderStatus = []"
+            @click="resetGendersFilter"
           >
             <span class="text-capitalize font-weight-bold">reset</span>
           </v-btn>
@@ -83,10 +88,18 @@
         multiple
         active-class="primary darken-3"
         v-model="genderStatus"
+        @change="checkGenderChanges"
       >
         <template v-for="(item, itemInd) in genders">
-        <v-spacer v-if="itemInd===2 && isDialog && $vuetify.breakpoint.xsOnly" :key="`divider-${itemInd}`" />
-          <v-item :key="itemInd" v-slot="{ active, toggle }">
+          <v-spacer
+            v-if="itemInd === 2 && isDialog && $vuetify.breakpoint.xsOnly"
+            :key="`divider-${itemInd}`"
+          />
+          <v-item
+            :key="itemInd"
+            v-slot="{ active, toggle }"
+            :value="item.title"
+          >
             <v-chip
               class="my-1 mr-2"
               filter
@@ -122,19 +135,25 @@
             small
             color="primary darken-3"
             class="rounded-lg"
-            @click="colorStatus = []"
+            @click="resetColorsFilter"
           >
             <span class="text-capitalize font-weight-bold">reset</span>
           </v-btn>
           <!-- </v-expand-transition> -->
         </div>
       </div>
-      <v-item-group v-model="colorStatus" multiple class="pr-1">
+      <v-item-group
+        v-model="colorStatus"
+        multiple
+        class="pr-1"
+        @change="checkColorChagnes"
+      >
         <v-item
           v-slot="{ active, toggle }"
           v-for="(item, itemInd) in colors"
           :key="itemInd"
           class="my-1"
+          :value="item"
           :class="{ 'ml-2': itemInd !== 0 }"
         >
           <v-btn
@@ -175,19 +194,20 @@
             small
             color="primary darken-3"
             class="rounded-lg"
-            @click="sizeStatus = []"
+            @click="resetSizesFilter"
           >
             <span class="text-capitalize font-weight-bold">reset</span>
           </v-btn>
           <!-- </v-expand-transition> -->
         </div>
       </div>
-      <v-item-group v-model="sizeStatus" multiple>
+      <v-item-group v-model="sizeStatus" multiple @change="checkSizeChanges">
         <v-item
           style="width: 50%"
           v-slot="{ active, toggle }"
           v-for="(item, itemInd) in sizes"
           :key="itemInd"
+          :value="item.value"
         >
           <!-- class="my-1 mx-2" -->
           <v-checkbox
@@ -199,7 +219,7 @@
             @click="toggle"
           >
             <template #label>
-              <span class="text-caption">{{ item }}</span>
+              <span class="text-caption">{{ item.title }}</span>
             </template>
           </v-checkbox>
         </v-item>
@@ -215,19 +235,19 @@
       <v-range-slider
         v-model="range"
         :max="max"
+        dense
         :thumb-label="true"
         :min="min"
+        @change="checkPriceChanges"
         hide-details
         color="primary darken-4"
         step="5"
         class="align-center"
       />
     </v-card-text>
-    <!--  -->
-    <!-- <div class="error--text">m:{{ mutation }}</div> -->
-    <div class="d-none" v-mutate="onMutate" v-show="false">
+    <!-- <div class="d-none" v-mutate="onMutate" v-show="false">
       {{ genderStatus }}{{ colorStatus }}{{ sizeStatus }}{{ range }}
-    </div>
+    </div> -->
   </v-card>
 </template>
 
@@ -267,6 +287,7 @@ export default {
         "info",
         "indigo",
         "orange",
+        "black",
         // "primary darken-4",
         // "error darken-4",
         // "success darken-4",
@@ -275,24 +296,132 @@ export default {
         // "orange darken-4",
       ],
       // sizes: ["xs", "SM", "LG", "XL", "Large", "Md", "Sm", "Lg"],
-      sizes: ["xs", "SM", "LG", "XL", "Large", "Md"],
+      // sizes: ["xs", "SM", "LG", "XL", "Large", "Md"],
+      sizes: [
+        {
+          title: "xs",
+          value: "xs",
+        },
+        {
+          title: "SM",
+          value: "sm",
+        },
+        {
+          title: "LG",
+          value: "lg",
+        },
+        {
+          title: "XL",
+          value: "xl",
+        },
+        // {
+        //   title: "Large",
+        //   value: "large",
+        // },
+        {
+          title: "XXL",
+          value: "xxl",
+        },
+        {
+          title: "Md",
+          value: "md",
+        },
+      ],
     };
   },
+  mounted() {
+    this.loadFilterOptions();
+  },
   methods: {
-    onMutate() {
-      this.mutation++;
-    },
+    // onMutate() {
+    //   this.mutation++;
+    // },
     resetAllFilters() {
       this.genderStatus = [];
       this.colorStatus = [];
       this.sizeStatus = [];
       this.range = [this.min, this.max];
-      setTimeout(() => {
-        this.mutation = 0;
-      }, 10);
+      this.$router.replace({ query: {} });
+      // setTimeout(() => {
+      // this.mutation = 0;
+      // }, 10);
     },
     closeFilterDialog() {
       this.$emit("closeFilterDialog");
+    },
+    checkGenderChanges() {
+      this.$router.replace({
+        query: { ...this.$route.query, gender: this.genderStatus },
+      });
+    },
+    checkColorChagnes() {
+      this.$router.replace({
+        query: { ...this.$route.query, color: this.colorStatus },
+      });
+    },
+    checkSizeChanges() {
+      this.$router.replace({
+        query: { ...this.$route.query, size: this.sizeStatus },
+      });
+    },
+    checkPriceChanges() {
+      this.$router.replace({
+        query: { ...this.$route.query, min: this.range[0], max: this.range[1] },
+      });
+    },
+    resetGendersFilter() {
+      this.genderStatus = [];
+      const { gender, ...queryOptions } = this.$route.query;
+      // this.$route.query = { ...this.$route.query, gender: [] };
+      this.$router.replace({ query: queryOptions });
+    },
+    resetColorsFilter() {
+      this.colorStatus = [];
+      const { color, ...queryOptions } = this.$route.query;
+      // this.$route.query = { ...this.$route.query, color: [] };
+      this.$router.replace({ query: queryOptions });
+    },
+    resetSizesFilter() {
+      this.sizeStatus = [];
+      const { size, ...queryOptions } = this.$route.query;
+      this.$router.replace({ query: queryOptions });
+    },
+    resetPricesFilter() {
+      this.range = [this.min, this.max];
+      const { min, max, ...queryOptions } = this.$route.query;
+      this.$router.replace({ query: queryOptions });
+    },
+    loadFilterOptions() {
+      const genders = this.$route.query.gender || [];
+      const colors = this.$route.query.color || [];
+      const sizes = this.$route.query.size || [];
+      const min = Number(this.$route.query.min) ?? this.min;
+      const max = Number(this.$route.query.max) ?? this.max;
+      this.genderStatus = genders;
+      this.colorStatus = colors;
+      this.sizeStatus = sizes;
+      this.$set(this.range, 0, min);
+      this.$set(this.range, 1, max);
+      if (!Array.isArray(genders)) {
+        this.genderStatus = [genders];
+      }
+      if (!Array.isArray(colors)) {
+        this.colorStatus = [colors];
+      }
+      if (!Array.isArray(sizes)) {
+        this.sizeStatus = [sizes];
+      }
+    },
+  },
+  computed: {
+    C_resetFilterStatus() {
+      return (
+        this.genderStatus.length >= 1 ||
+        this.colorStatus.length >= 1 ||
+        this.sizeStatus.length >= 1 ||
+        JSON.stringify(this.range) !==
+          JSON.stringify([Number(this.min), Number(this.max)])
+      );
     },
   },
   props: {

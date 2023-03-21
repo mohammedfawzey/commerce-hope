@@ -5,12 +5,13 @@
     >
       <span class="link">
         <v-hover v-slot="{ hover }">
-          <nuxt-link to="/">
-            <span
-              :class="{ 'grey--text': hover }"
-              class="text-capitalize font-s-14 font-w-600"
-              >home</span
-            >
+          <nuxt-link
+            :class="[{ 'grey--text': hover && $route.path != '/' }]"
+            to="/"
+            class="text-capitalize font-s-14 font-weight-medium"
+            exact-active-class="primary--text text--darken-2"
+          >
+            home
           </nuxt-link>
         </v-hover>
       </span>

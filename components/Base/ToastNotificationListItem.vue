@@ -50,7 +50,6 @@ export default {
       this.$store.commit("M_deleteNotification", this.item);
     },
     async checkNotification() {
-        console.log("called")
       await this.deleteTheNotification();
     },
   },

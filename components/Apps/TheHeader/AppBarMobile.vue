@@ -2,29 +2,26 @@
   <v-app-bar app fixed bottom class="toolbar_content_pa_0">
     <div class="d-flex align-center justify-space-between" style="width: 100%">
       <div
-        class="fifth-width"
+        class="fourth-width"
         v-for="(item, itemInd) in mobileLinks"
         :key="itemInd"
       >
         <v-btn
           block
-          height="55"
+          height="56"
           :nuxt="item.route ? true : false"
-          :to="`${item.route}`"
+          :to="item.route ? `${item.route}` : ''"
           text
-          active-class="error"
           @click="item.hasMethod ? openSearchDialog() : ''"
+          active-class="primary darken-2 white--text"
         >
           <!-- :to="item.route ? `/${item.route}` : ''" -->
           <div class="d-flex flex-column align-center justify-center">
             <v-icon class="mb-1">{{ item.icon }}</v-icon>
-            <span
-              class="
-                d-none d-sm-inline-block
-                text-capitalize text-small text-caption
-              "
-              >{{ item.title }}</span
-            >
+            <!-- d-none d-sm-inline-block -->
+            <span class="text-capitalize txt-small-no-color">{{
+              item.title
+            }}</span>
           </div>
         </v-btn>
       </div>
@@ -85,5 +82,8 @@ export default {
 }
 .fifth-width {
   width: 20%;
+}
+.fourth-width {
+  width: 25%;
 }
 </style>
