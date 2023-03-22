@@ -85,16 +85,14 @@
                 <!-- price -->
                 <v-col
                   cols="2"
-                  v-if="$vuetify.breakpoint.smAndUp"
-                  class="d-flex align-center"
+                  class="hidden-xs-only d-sm-flex align-center"
                 >
                   <span class="text-caption">US$ {{ item.product.price }}</span>
                 </v-col>
                 <!-- quantity -->
                 <v-col
                   cols="2"
-                  v-if="$vuetify.breakpoint.smAndUp"
-                  class="d-flex align-center"
+                  class="d-none d-sm-flex align-center"
                 >
                   <div
                     class="quantity text-right"
@@ -154,8 +152,7 @@
                 <!-- total price -->
                 <v-col
                   cols="2"
-                  v-if="$vuetify.breakpoint.smAndUp"
-                  class="d-flex align-center"
+                  class="d-none d-sm-flex align-center"
                 >
                   <span class="text-caption"
                     >US$ {{ item.product.price * item.quantity }}</span
@@ -164,9 +161,8 @@
                 <!-- delete -->
                 <v-col
                   cols="2"
-                  v-if="$vuetify.breakpoint.smAndUp"
                   lg="1"
-                  class="d-flex align-center justify-center justify-lg-start"
+                  class="d-none d-sm-flex align-center justify-center justify-lg-start"
                 >
                   <v-btn
                     icon

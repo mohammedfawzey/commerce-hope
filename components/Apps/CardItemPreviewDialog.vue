@@ -3,7 +3,6 @@
     v-model="active"
     max-width="900"
     :fullscreen="$vuetify.breakpoint.xsOnly"
-    class="hidden-xs-only"
     content-class="hidden-xs-only"
     v-if="$vuetify.breakpoint.smAndUp"
   >

@@ -40,7 +40,6 @@
                   <span class="font-weight-bold">-{{ item.rival }}%</span>
                 </v-chip>
               </div>
-              <!-- v-if="$vuetify.breakpoint.smAndUp" -->
               <div
                 @click.stop
                 class="

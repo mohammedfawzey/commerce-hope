@@ -1,13 +1,13 @@
 <template>
-   <Profile />
+  <Profile />
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+  head() {
+    return {
+      title: "Profile",
+    };
+  },
+};
 </script>
-
-<style lang="scss" scoped>
-
-</style>

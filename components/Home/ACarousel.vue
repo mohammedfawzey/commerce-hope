@@ -27,10 +27,9 @@
         >
           <v-overlay
             absolute
-            class="a-carousel"
+            class="a-carousel d-md-none"
             :opacity="$vuetify.breakpoint.smAndDown ? 0.1 : 0"
             z-index="1"
-            v-if="$vuetify.breakpoint.smAndDown"
           />
           <v-sheet
             height="100%"

@@ -1,0 +1,9 @@
+{
+  "name": "commerce-hope",
+  "short_name": "commerce-hope",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}

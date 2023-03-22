@@ -1,10 +1,6 @@
 <template>
-  <div class="with-invoices" v-if="$store.state.S_invoices.length >= 1">
-    <v-simple-table
-      height="300px"
-      class="pt-3 pt-md-0"
-      v-if="$vuetify.breakpoint.mdAndUp && false"
-    >
+  <div class="with-invoices" v-if="$store.state.S_invoices.length >= 1 || true">
+    <v-simple-table height="300px" class="pt-3 pt-md-0 hidden-sm-and-down">
       <template v-slot:default>
         <thead>
           <tr class="bg-shape">
@@ -13,7 +9,7 @@
               :class="item.class"
               v-for="(item, itemInd) in invoiceItemsModel"
               :key="itemInd"
-              v-text="item.product.title"
+              v-text="item.title"
             />
             <!-- <th class="text-left">Calories</th> -->
           </tr>
@@ -67,8 +63,11 @@
                 </span>
               </v-chip>
             </td>
-            <td>
-              <span class="text-caption">
+            <td class="text-right">
+              <span
+                class="text-caption"
+                style="color: rgb(33, 43, 54) !important"
+              >
                 {{ item.date }}
               </span>
             </td>
@@ -78,9 +77,8 @@
     </v-simple-table>
     <v-card
       flat
-      class="mx-auto mt-3 v-scrollbar overflow-y-auto"
+      class="d-md-none mx-auto mt-3 v-scrollbar overflow-y-auto"
       max-height="800"
-      v-else
     >
       <template v-for="(item, itemInd) in $store.state.S_invoices">
         <!-- <v-row :key="itemInd"> The orw</v-row> -->

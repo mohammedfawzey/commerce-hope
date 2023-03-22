@@ -10,7 +10,7 @@
             >
               {{ C_item["title"] }}
             </v-list-item-title>
-            <v-breadcrumbs  :items="C_path">
+            <v-breadcrumbs :items="C_path">
               <template #divider>
                 <v-icon small class="px-0">mdi-chevron-right</v-icon>
               </template>
@@ -52,6 +52,7 @@ export default {
   }),
   mounted() {
     this.getTheProduct();
+    console.log(this.C_item);
   },
   methods: {
     getTheProduct() {
@@ -71,6 +72,18 @@ export default {
         },
       ];
     },
+  },
+  head() {
+    return {
+      title: this.C_item.title || "Baby don't cry",
+      meta: [
+        {
+          hid: this.C_item.title,
+          name: this.C_item.title,
+          content: `${this.C_item.title || "Home"} page description`,
+        },
+      ],
+    };
   },
 };
 </script>

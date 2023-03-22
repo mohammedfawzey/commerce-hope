@@ -3,7 +3,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "Login",
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
