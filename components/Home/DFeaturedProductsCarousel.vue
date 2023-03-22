@@ -46,7 +46,7 @@
 
 <script>
 import VueSlickCarousel from "vue-slick-carousel";
-import products from "~/data/products2.json";
+import products from "@/data/products.json";
 // optional style for arrows & dots
 // import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 // import "vue-slick-carousel/dist/vue-slick-carousel.css";

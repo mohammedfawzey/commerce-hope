@@ -13,7 +13,10 @@
               <v-stepper v-model="step" outlined flat class="border-color py-2">
                 <v-stepper-items class="pa-0">
                   <CheckoutCart />
-                  <CheckoutBillingInfo :next-step="nextStep" />
+                  <CheckoutBillingInfo
+                    :next-step="nextStep"
+                    @setUserInfo="getUserInfo"
+                  />
                   <CheckoutPayment />
                 </v-stepper-items>
               </v-stepper>
@@ -68,9 +71,13 @@
                   </v-tooltip>
                 </v-card-title>
                 <div class="billing-info mt-0 pa-3">
-                  <span class="text-caption">
-                    undefined undefined undefined undefined
-                  </span>
+                  <v-list-item-title class="text-h6 font-weight-bold">{{
+                    userInfo.fullName
+                  }}</v-list-item-title>
+                  <v-list-item-subtitle class="text-caption">
+                    <!-- undefined undefined undefined undefined -->
+                    {{ userInfo.text }}
+                  </v-list-item-subtitle>
                 </div>
               </v-card>
               <v-card outlined flat class="border-color pa-3 rounded-lg">
@@ -94,14 +101,14 @@
                   <span class="text-caption">Sup Total</span>
                   <span
                     class="ml-auto text-body-2 font-weight-medium black--text"
-                    >US$ 0</span
+                    >US$ {{ $store.getters["G_totalPrice"] }}</span
                   >
                 </v-card-text>
                 <v-card-text class="d-flex align-center">
                   <span class="text-caption text--darken-3">Shipping</span>
                   <v-spacer />
                   <span class="text-body-2 font-weight-medium black--text"
-                    >US$ 0</span
+                    >US$ {{ $store.state.S_cart.length >= 1 ? 5 : 0 }}</span
                   >
                 </v-card-text>
                 <div class="px-3">
@@ -117,7 +124,12 @@
                       error--text
                       text--darken-1
                     "
-                    >US$ 0</span
+                    >US$
+                    {{
+                      $store.state.S_cart.length
+                        ? $store.getters["G_totalPrice"] + 5
+                        : 0
+                    }}</span
                   >
                 </v-card-text>
               </v-card>
@@ -127,7 +139,7 @@
                   color="primary darken-2"
                   class="rounded-lg mt-6"
                   depressed
-                  v-if="step <= 1"
+                  v-if="step <= 1 && $store.state.S_cart.length >= 1"
                   large
                   @click="step = 2"
                   height="48"
@@ -168,6 +180,7 @@ export default {
       step: 1,
       timeout: 2000,
       isBtnClicked: false,
+      userInfo: {},
     };
   },
   methods: {
@@ -178,6 +191,7 @@ export default {
       this.isBtnClicked = true;
       new Promise((resolve, reject) => {
         setTimeout(() => {
+          this.$store.commit("M_completeOrder");
           this.isBtnClicked = false;
           resolve("end");
         }, this.timeout);
@@ -187,6 +201,10 @@ export default {
           this.$router.push({ path: "/profile" });
         }, this.timeout);
       });
+    },
+    getUserInfo(value) {
+      console.log("value", value);
+      this.userInfo = value;
     },
   },
 };

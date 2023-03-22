@@ -41,6 +41,7 @@
       <!-- contain -->
       <v-img
         :src="require('@/assets/imgs/home/c-top-collections/view.png')"
+        :lazy-src="require('@/assets/imgs/home/c-top-collections/view.png')"
         class="rounded-lg zoom-img-on-hover"
         min-height="160"
       ></v-img>
@@ -49,7 +50,7 @@
 </template>
 
 <script>
-import products from "~/data/products2.json";
+import products from "@/data/products.json";
 export default {
   data: () => ({
     items: products,

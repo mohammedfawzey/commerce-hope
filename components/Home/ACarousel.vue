@@ -18,6 +18,7 @@
         <v-img
           style="user-select: none"
           :src="require(`@/assets/imgs/home/a-landing/${item.img}.png`)"
+          :lazy-src="require(`@/assets/imgs/home/a-landing/${item.img}.png`)"
           eager
           position="center"
           max-height="500"

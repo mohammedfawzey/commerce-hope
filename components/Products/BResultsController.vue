@@ -85,20 +85,30 @@ export default {
       // "Newest",
     ],
     showNumber: [6, 12, 18, 24, 30],
+    options: [
+      { head: "top", value: 1, title: "Top Rated" },
+      { head: "name", value: 1, title: "Asceding" },
+      { head: "name", value: -1, title: "Desceding" },
+      { head: "price", value: 1, title: "Price, low - high" },
+      { head: "price", value: -1, title: "Price, high - low" },
+    ],
   }),
+  mounted() {
+    this.loadSortOptions();
+  },
   computed: {
     C_selectedOption() {
       return this.selectOptionsStatus === "Top Rated"
-        ? { head: "top", value: 1 }
+        ? { head: "top", value: 1, title: "Top Rated" }
         : this.selectOptionsStatus === "Asceding"
-        ? { head: "name", value: 1 }
+        ? { head: "name", value: 1, title: "Asceding" }
         : this.selectOptionsStatus === "Desceding"
-        ? { head: "name", value: -1 }
+        ? { head: "name", value: -1, title: "Desceding" }
         : this.selectOptionsStatus === "Price, low - high"
-        ? { head: "price", value: 1 }
+        ? { head: "price", value: 1, title: "Price, low - high" }
         : this.selectOptionsStatus === "Price, high - low"
-        ? { head: "price", value: -1 }
-        : { head: "name", value: 1 };
+        ? { head: "price", value: -1, title: "Price, high - low" }
+        : { head: "name", value: 1, title: "Top Rated" };
     },
   },
   methods: {
@@ -106,13 +116,31 @@ export default {
       this.$emit("changeCardLimitsInPage", this.showNumberStatus);
     },
     changeSort() {
-      const { name, price, ...queryOptions } = this.$route.query;
+      const { name, price, top, ...queryOptions } = this.$route.query;
       this.$router.replace({
         query: {
           ...queryOptions,
           [this.C_selectedOption.head]: this.C_selectedOption.value,
         },
       });
+    },
+    loadSortOptions() {
+      const { gender, color, size, min, max, page, ...sortOption } =
+        this.$route.query;
+      const sortOptionHead = Object.keys(sortOption)[0] ?? "name";
+      const sortOptionValue = sortOption[sortOptionHead] ?? 1;
+      const THE_SELECTED_OPTION = this.options.find(
+        (el) =>
+          el.head === sortOptionHead &&
+          Number(el.value) === Number(sortOptionValue)
+      );
+      this.selectOptionsStatus = THE_SELECTED_OPTION.title ?? "Asceding";
+      //
+    },
+  },
+  watch: {
+    "$route.query"() {
+      this.loadSortOptions();
     },
   },
   props: {

@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import products from "~/data/products2.json";
+import products from "@/data/products.json";
 export default {
   data: () => ({
     products,

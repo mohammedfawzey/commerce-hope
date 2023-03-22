@@ -31,12 +31,13 @@
           : "Login to your account to continue"
       }}</v-card-subtitle>
       <!-- inputs -->
-      <v-row>
+      <v-row class="mt-2">
         <template v-for="(item, itemInd) in inputs">
           <v-col
             v-if="!register ? item.loginOnly : true"
             :cols="item.loginOnly ? 12 : 6"
             :key="itemInd"
+            class="py-0"
           >
             <!-- select -->
             <v-select
@@ -56,10 +57,11 @@
             </v-select>
             <!-- fields -->
             <!-- v-else-if="!register ? item.loginOnly : true" -->
+              <!-- hide-details="filled required" -->
             <v-text-field
               v-else
               :prepend-inner-icon="item.icon"
-              hide-details
+              :rules="[rules.required]"
               v-model="item.state"
               outlined
               :append-icon="
@@ -178,7 +180,8 @@ export default {
       {
         title: "email address",
         icon: "mdi-email",
-        state: "m.fawzey.work@gmail.com",
+        // state: "m.fawzey.work@gmail.com",
+        state: "test@gmail.com",
         loginOnly: true,
         type: "email",
       },
@@ -249,14 +252,15 @@ export default {
       }
     },
     async login() {
-      try {
-        let result = await this.$auth.loginWith("local", {
-          data: this.C_userLoginInfo,
-        });
-        this.isSubmitBtnClicked = false;
-      } catch (err) {
-        this.isSubmitBtnClicked = false;
-      }
+      this.$router.push({ path: "/" });
+      // try {
+      //   let result = await this.$auth.loginWith("local", {
+      //     data: this.C_userLoginInfo,
+      //   });
+      //   this.isSubmitBtnClicked = false;
+      // } catch (err) {
+      //   this.isSubmitBtnClicked = false;
+      // }
       // try {
       //   await this.$axios
       //     .post("/api/v1/auth/login", this.C_userLoginInfo)
@@ -273,6 +277,7 @@ export default {
       //
     },
     M_register() {
+      this.$router.push({ path: "/" });
       // first|last name | gender | phone | email | password
       // const userInfo
     },

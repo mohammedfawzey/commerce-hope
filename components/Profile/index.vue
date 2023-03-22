@@ -48,7 +48,8 @@
           :show-arrows="$vuetify.breakpoint.smAndDown"
           :vertical="$vuetify.breakpoint.mdAndUp"
           :centered="!$vuetify.breakpoint.mdAndUp"
-          color="primary"
+          color="primary darken-2"
+          center-active
         >
           <!-- active-class="primary-lighten" -->
           <v-tab

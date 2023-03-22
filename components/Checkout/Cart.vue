@@ -5,11 +5,12 @@
       <span
         class="font-weight-medium text-body-1"
         style="color: rgb(99, 115, 129)"
-        >(0 Items)</span
+        >({{$store.state.S_cart.length}} Items)</span
       >
     </div>
     <!-- with-items -->
-    <div class="with-items mt-sm-8">
+    <!-- ss{{ $store.state.S_cart }} -->
+    <div class="with-items mt-sm-8" v-if="$store.state.S_cart.length >= 1">
       <!-- preview -->
       <div class="preview hidden-xs-only pr-3">
         <v-row
@@ -33,7 +34,7 @@
       </div>
       <!-- big -->
       <div class="items pr-3 mt-3">
-        <template v-for="(item, itemInd) in items.slice(0, 3)">
+        <template v-for="(item, itemInd) in $store.state.S_cart">
           <v-divider :key="`divider-${itemInd}`" class="my-4" />
           <v-row :key="itemInd">
             <v-col>
@@ -45,7 +46,10 @@
                     <v-img
                       class="border-color pl-2 rounded-lg"
                       :src="
-                        require(`@/assets/imgs/home/c-top-collections/${item.img}.png`)
+                        require(`@/assets/imgs/products/${item.product.img}.png`)
+                      "
+                      :lazy-src="
+                        require(`@/assets/imgs/products/${item.product.img}.png`)
                       "
                       aspect-ratio="1"
                       width="64"
@@ -56,14 +60,21 @@
                     <v-list-item-content class="ml-3">
                       <v-list-item-title
                         class="text-body-2 font-w-600 text-head"
-                        >{{ item.title }}</v-list-item-title
+                        >{{ item.product.title }}</v-list-item-title
                       >
                       <div class="size-color text-caption hidden-xs-only">
                         <span class="size text-subhead"
                           >size: <span class="black--text">XS</span></span
                         >
-                        <span class="text-subhead d-none d-lg-inline-block">|</span>
-                        <span class="color d-sm-block d-md-inline-block text-subhead"
+                        <span class="text-subhead d-none d-lg-inline-block"
+                          >|</span
+                        >
+                        <span
+                          class="
+                            color
+                            d-sm-block d-md-inline-block
+                            text-subhead
+                          "
                           >color: <span class="black--text">aqua</span></span
                         >
                       </div>
@@ -77,7 +88,7 @@
                   v-if="$vuetify.breakpoint.smAndUp"
                   class="d-flex align-center"
                 >
-                  <span class="text-caption">US$ 22</span>
+                  <span class="text-caption">US$ {{ item.product.price }}</span>
                 </v-col>
                 <!-- quantity -->
                 <v-col
@@ -85,7 +96,10 @@
                   v-if="$vuetify.breakpoint.smAndUp"
                   class="d-flex align-center"
                 >
-                  <div class="quantity" style="max-width: 96px; width: 96px">
+                  <div
+                    class="quantity text-right"
+                    style="max-width: 96px; width: 96px"
+                  >
                     <div
                       class="
                         quantity-controller
@@ -94,19 +108,47 @@
                         justify-space-between
                         border-color
                         rounded-lg
-                        px-3
+                        px-md-3 px-2
+                        gap-5
                         py-1
                       "
                     >
                       <!-- gap-10 -->
-                      <v-btn icon height="26" width="26">
-                        <v-icon small>mdi-minus</v-icon>
+                      <v-btn
+                        icon
+                        height="26"
+                        width="26"
+                        :disabled="item.quantity <= 1"
+                        @click="
+                          $store.commit(
+                            'M_decreaseProductQuantity',
+                            item.product
+                          )
+                        "
+                      >
+                        <v-icon small color="black">mdi-minus</v-icon>
                       </v-btn>
-                      <span class="text-caption">1</span>
-                      <v-btn icon height="26" width="26">
-                        <v-icon small>mdi-plus</v-icon>
+                      <span class="text-caption">{{ item.quantity }}</span>
+                      <v-btn
+                        icon
+                        height="26"
+                        width="26"
+                        :disabled="item.product.available <= item.quantity"
+                        @click="
+                          $store.commit(
+                            'M_increaseProductQuantity',
+                            item.product
+                          )
+                        "
+                      >
+                        <v-icon small color="black">mdi-plus</v-icon>
                       </v-btn>
                     </div>
+                    <span
+                      class="text-caption available text-right text-subhead"
+                      style="font-size: 10px !important"
+                      >Available {{ item.product.available }}</span
+                    >
                   </div>
                 </v-col>
                 <!-- total price -->
@@ -115,7 +157,9 @@
                   v-if="$vuetify.breakpoint.smAndUp"
                   class="d-flex align-center"
                 >
-                  <span class="text-caption">US$ 22</span>
+                  <span class="text-caption"
+                    >US$ {{ item.product.price * item.quantity }}</span
+                  >
                 </v-col>
                 <!-- delete -->
                 <v-col
@@ -124,7 +168,13 @@
                   lg="1"
                   class="d-flex align-center justify-center justify-lg-start"
                 >
-                  <v-btn icon color="primary darken-2">
+                  <v-btn
+                    icon
+                    color="primary darken-2"
+                    @click="
+                      $store.commit('M_deleteProductFromCart', item.product)
+                    "
+                  >
                     <v-icon>mdi-delete-outline</v-icon>
                   </v-btn>
                 </v-col>
@@ -141,12 +191,15 @@
                     <div class="content text-caption">
                       <div><b>size</b>: XS</div>
                       <div><b>color</b>: aqua</div>
-                      <div><b>Price</b>: US$ 22</div>
-                      <div><b>Total</b>: US$ 22</div>
+                      <div><b>Price</b>: US$ {{ item.product.price }}</div>
+                      <div>
+                        <b>Total</b>: US$
+                        {{ item.product.price * item.quantity }}
+                      </div>
                     </div>
                     <div class="controller">
                       <div
-                        class="quantity ml-auto d-block"
+                        class="quantity text-right ml-auto d-block"
                         style="max-width: 96px; width: 96px"
                       >
                         <div
@@ -162,19 +215,53 @@
                           "
                         >
                           <!-- gap-10 -->
-                          <v-btn icon height="26" width="26">
-                            <v-icon small>mdi-minus</v-icon>
+                          <v-btn
+                            icon
+                            height="26"
+                            width="26"
+                            :disabled="item.quantity <= 1"
+                            @click="
+                              $store.commit(
+                                'M_decreaseProductQuantity',
+                                item.product
+                              )
+                            "
+                          >
+                            <v-icon small color="black">mdi-minus</v-icon>
                           </v-btn>
-                          <span class="text-caption">1</span>
-                          <v-btn icon height="26" width="26">
-                            <v-icon small>mdi-plus</v-icon>
+                          <span class="text-caption">{{ item.quantity }}</span>
+                          <v-btn
+                            icon
+                            height="26"
+                            width="26"
+                            :disabled="item.product.available <= item.quantity"
+                            @click="
+                              $store.commit(
+                                'M_increaseProductQuantity',
+                                item.product
+                              )
+                            "
+                          >
+                            <v-icon small color="black">mdi-plus</v-icon>
                           </v-btn>
                         </div>
+                        <span
+                          class="
+                            text-caption
+                            savailable
+                            text-right text-subhead
+                          "
+                          style="font-size: 10px !important"
+                          >Available {{ item.product.available }}</span
+                        >
                       </div>
                       <v-btn
                         icon
                         color="primary darken-2"
-                        class="ml-auto d-block mt-2"
+                        class="ml-auto d-block mt-1"
+                        @click="
+                          $store.commit('M_deleteProductFromCart', item.product)
+                        "
                       >
                         <v-icon>mdi-delete-outline</v-icon>
                       </v-btn>
@@ -188,9 +275,10 @@
       </div>
     </div>
     <!-- no-items -->
-    <div class="no-item px-4" v-if="false">
+    <div class="no-item px-4 mt-8" v-else>
       <v-img
         :src="require('@/assets/imgs/no-item-in-cart.svg')"
+        :lazy-src="require('@/assets/imgs/no-item-in-cart.svg')"
         class="mx-auto mt-10"
         max-width="360"
       ></v-img>
@@ -199,10 +287,22 @@
 </template>
 
 <script>
-import items from "~/data/products.json";
+import items from "@/data/products.json";
 export default {
   data: () => ({
     items,
   }),
 };
 </script>
+
+<style lang="scss" scoped>
+.quantity {
+  position: relative;
+  span.available {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transform: translateY(5px);
+  }
+}
+</style>

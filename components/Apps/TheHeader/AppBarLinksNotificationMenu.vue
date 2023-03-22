@@ -11,7 +11,7 @@
     <!-- content-class="pa-3 menu-arrow white" -->
     <template #activator="{ on, attrs }">
       <v-btn depressed v-on="on" v-bind="attrs" icon width="40" height="40">
-        <v-badge overlap content="1" color="error">
+        <v-badge overlap content="1" color="error" offset-x="10">
           <v-icon :color="active ? 'primary' : 'rgb(99, 115, 129)'"
             >mdi-bell</v-icon
           >

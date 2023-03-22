@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app fixed bottom class="toolbar_content_pa_0">
+  <v-app-bar app fixed bottom class="toolbar_content_pa_0 app-bar-bg">
     <div class="d-flex align-center justify-space-between" style="width: 100%">
       <div
         class="fourth-width"
@@ -15,8 +15,25 @@
           @click="item.hasMethod ? openSearchDialog() : ''"
           active-class="primary darken-2 white--text"
         >
+          <div
+            v-if="item.badge"
+            class="d-flex flex-column align-center justify-center"
+          >
+            <v-badge
+              overlap
+              offset-x="7"
+              :content="$store.state.S_cart.length || '0'"
+              color="#D33131"
+            >
+              <v-icon class="mb-1">{{ item.icon }}</v-icon>
+              <!-- d-none d-sm-inline-block -->
+            </v-badge>
+            <span class="text-capitalize txt-small-no-color">{{
+              item.title
+            }}</span>
+          </div>
           <!-- :to="item.route ? `/${item.route}` : ''" -->
-          <div class="d-flex flex-column align-center justify-center">
+          <div v-else class="d-flex flex-column align-center justify-center">
             <v-icon class="mb-1">{{ item.icon }}</v-icon>
             <!-- d-none d-sm-inline-block -->
             <span class="text-capitalize txt-small-no-color">{{
@@ -47,6 +64,7 @@ export default {
         title: "checkout",
         icon: "mdi-basket",
         route: "/checkout",
+        badge: true,
       },
       // {
       //   title: "notification",

@@ -52,7 +52,7 @@
                   flex-column
                 "
               >
-                <v-slide-x-reverse-transition>
+                <v-slide-x-reverse-transition v-if="false">
                   <div class="add-to-favourite" v-if="hover">
                     <v-btn icon small width="30" height="30" @click.stop>
                       <v-icon size="20">mdi-heart-outline</v-icon>
@@ -141,6 +141,7 @@
           dark
           height="40"
           depressed
+          @click="addToCart"
         >
           <span class="text-capitalize">add to cart</span>
         </v-btn>
@@ -191,6 +192,9 @@ export default {
     },
     redirectToProductDetail(itemId) {
       this.$router.push({ path: `/products/${itemId}` });
+    },
+    addToCart() {
+      this.$store.commit("M_addToCart", this.item);
     },
   },
 };

@@ -52,7 +52,9 @@
             <v-img
               v-ripple
               :src="require(`@/assets/imgs/products/${C_item.img || 1}.png`)"
-              :lazy-src="require(`@/assets/imgs/products/${C_item.img || 1}.png`)"
+              :lazy-src="
+                require(`@/assets/imgs/products/${C_item.img || 1}.png`)
+              "
               class="active-mini-image pointer rounded-lg"
               width="60"
               aspect-ratio="1"
@@ -246,7 +248,7 @@
                 outlined
                 color="orange darken-2"
                 class="rounded-lg"
-                @click="active = false"
+                @click="$store.commit('M_addToCart', C_item)"
                 height="40"
                 depressed
               >
@@ -259,12 +261,14 @@
                 color="primary darken-2"
                 height="40"
                 class="rounded-lg"
+                nuxt
+                to="/checkout"
                 depressed
               >
                 <span class="text-capitalize">buy now</span>
               </v-btn>
             </div>
-            <div class="box hidden-sm-and-down" v-if="!dialog">
+            <div class="box hidden-sm-and-down d-none" v-if="!dialog">
               <v-tooltip
                 transition="slide-y-reverse-transition"
                 open-delay="750"

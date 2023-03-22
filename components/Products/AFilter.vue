@@ -395,13 +395,17 @@ export default {
       const genders = this.$route.query.gender || [];
       const colors = this.$route.query.color || [];
       const sizes = this.$route.query.size || [];
-      const min = Number(this.$route.query.min) ?? this.min;
-      const max = Number(this.$route.query.max) ?? this.max;
+      // const min = Number(this.$route.query.min) ?? this.min;
+      // const max = Number(this.$route.query.max) ?? this.max;
       this.genderStatus = genders;
       this.colorStatus = colors;
       this.sizeStatus = sizes;
-      this.$set(this.range, 0, min);
-      this.$set(this.range, 1, max);
+      // if (this.range[0] != min) {
+      //   this.$set(this.range, 0, min);
+      // }
+      // if (this.range[1] != max) {
+      //   this.$set(this.range, 1, max);
+      // }
       if (!Array.isArray(genders)) {
         this.genderStatus = [genders];
       }
@@ -422,6 +426,11 @@ export default {
         JSON.stringify(this.range) !==
           JSON.stringify([Number(this.min), Number(this.max)])
       );
+    },
+  },
+  watch: {
+    "$route.query"() {
+      this.loadFilterOptions();
     },
   },
   props: {

@@ -1,5 +1,5 @@
 <template>
-  <section id="b-filter-results">
+  <section id="b-filter-results" class="ml-md-3 ml-lg-1">
     <!-- filter-dialog -->
     <v-dialog
       v-model="filterDialogStatus"
@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import products from "~/data/products2.json";
+import products from "@/data/products.json";
 // page 1 : 6*0=>6*1(v)
 // page 2 : 6*1=>6*2
 // page 3 : 6*2=>6*3

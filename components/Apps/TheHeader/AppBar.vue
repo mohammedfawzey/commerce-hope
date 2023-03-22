@@ -32,7 +32,12 @@
       height="40"
     >
       <!-- :color="active?'primary':'rgb(99, 115, 129)'" -->
-      <v-badge overlap content="3" color="#007DFC">
+      <v-badge
+        overlap
+        :content="$store.state.S_cart.length || '0'"
+        color="rgb(13, 68, 251)"
+        offset-x="7"
+      >
         <v-icon> mdi-basket </v-icon>
       </v-badge>
     </v-btn>

@@ -9,14 +9,14 @@
   },
   {
     "title": "men",
-    "route": "/products"
+    "route": "/products?gender=men"
   },
   {
     "title": "women",
-    "route": "/products"
+    "route": "/products?gender=women"
   },
   {
     "title": "kids",
-    "route": "/products"
+    "route": "/products?gender=kids"
   }
 ]
