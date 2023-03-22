@@ -137,13 +137,14 @@ a.nuxt-link-active {
 .v-btn-shadow:hover {
   box-shadow: none !important;
 }
-.zoom-img-on-hover .v-image__image {
-  transition: 0.3s all;
-}
-.zoom-img-on-hover:hover .v-image__image {
-  transform: scale(1.07);
-  filter: blur(2px);
-  /* transform: scale(1.2) rotate(45deg); */
+@media (min-width: 600px) {
+  .zoom-img-on-hover .v-image__image {
+    transition: 0.3s all;
+  }
+  .zoom-img-on-hover:hover .v-image__image {
+    transform: scale(1.07);
+    filter: blur(2px);
+  }
 }
 .v-breadcrumbs__divider {
   padding-right: 5px !important;

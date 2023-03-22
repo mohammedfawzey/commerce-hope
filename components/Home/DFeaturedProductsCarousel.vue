@@ -11,7 +11,6 @@
       >
     </div>
     <v-sheet max-width="100%" color="transparent">
-      <!-- max-width="calc(100% - 65px)" -->
       <VueSlickCarousel
         v-bind="settings"
         ref="carousel"
@@ -48,24 +47,9 @@
 import VueSlickCarousel from "vue-slick-carousel";
 import products from "@/data/products.json";
 // optional style for arrows & dots
-// import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
-// import "vue-slick-carousel/dist/vue-slick-carousel.css";
 export default {
   data: () => ({
     settings: {
-      //   centerMode: true,
-      //   centerPadding: "20px",
-      //   focusOnSelect: true,
-      //   infinite: true,
-      //   speed: 500,
-      //   arrows: false,
-      //   autoPlay: true,
-      //   autoplaySpeed: 2000,
-      //   slidesToScroll: 1,
-      //   pauseOnDotsHover: true,
-      //   pauseOnFocus: true,
-      //   pauseOnHover: true,
-      //
       centerMode: true,
       centerPadding: "20px",
       arrows: false,

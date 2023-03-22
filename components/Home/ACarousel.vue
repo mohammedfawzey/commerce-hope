@@ -5,8 +5,9 @@
       hide-delimiters
       v-model="active"
       style="position: relative"
+      :interval="15000"
       cycle
-      continuous
+      :continuous="false"
     >
       <!--  -->
       <v-carousel-item
