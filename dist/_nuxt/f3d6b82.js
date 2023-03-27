@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[43],{780:function(t,e,n){"use strict";n.r(e);var l={head:function(){return{title:"Register"}}},r=n(22),component=Object(r.a)(l,(function(){return(0,this._self._c)("AuthRegister")}),[],!1,null,null,null);e.default=component.exports;installComponents(component,{AuthRegister:n(763).default})}}]);
