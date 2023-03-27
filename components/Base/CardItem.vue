@@ -15,12 +15,11 @@
       <v-hover v-slot="{ hover }">
         <!-- src="https://bad.src/not/valid" -->
         <v-img
-          :src="require(`@/assets/imgs/products/${item.img}.png`)"
+          :src="`/imgs/products/${item.img}.png`"
           aspect-ratio="1"
           class="rounded-lg rounded-b-0 pointer"
           @click="redirectToProductDetail(item.id)"
         >
-          <!-- max-height="300" -->
           <template #placeholder>
             <v-skeleton-loader
               type="image"

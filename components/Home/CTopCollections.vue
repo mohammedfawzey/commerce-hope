@@ -39,12 +39,11 @@
       <!-- aspect-ratio="2.4870466321243523" -->
       <!-- eager -->
       <!-- contain -->
-      <v-img
-        :src="require('@/assets/imgs/home/c-top-collections/view.png')"
-        :lazy-src="require('@/assets/imgs/home/c-top-collections/view.png')"
-        class="rounded-lg zoom-img-on-hover"
-        min-height="160"
-      ></v-img>
+      <nuxt-img
+        src="/imgs/home/c-top-collections/view.png"
+        class="rounded-lg zoom-img-on-hover fill-width"
+        style="min-height:160px; object-fit:cover"
+      ></nuxt-img>
     </div>
   </section>
 </template>

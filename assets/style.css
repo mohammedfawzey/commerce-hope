@@ -100,6 +100,10 @@ a.nuxt-link-active {
 .fill-width {
   width: 100% !important;
 }
+.fill-height{
+  height:100%;
+}
+
 .toolbar_content_pa_0 .v-toolbar__content {
   padding: 0px !important;
 }
@@ -138,11 +142,11 @@ a.nuxt-link-active {
   box-shadow: none !important;
 }
 @media (min-width: 600px) {
-  .zoom-img-on-hover .v-image__image {
+  .zoom-img-on-hover{
     transition: 0.3s all;
   }
-  .zoom-img-on-hover:hover .v-image__image {
-    transform: scale(1.07);
+  .zoom-img-on-hover:hover{
+    /* transform: scale(1.07); */
     filter: blur(2px);
   }
 }
@@ -269,4 +273,9 @@ a.nuxt-link-active {
 }
 .custom_pagination_styles .v-pagination__navigation .v-icon {
   font-size: 20px !important;
+}
+
+.contain__img {
+  object-fit: contain;
+  aspect-ratio: 1;
 }

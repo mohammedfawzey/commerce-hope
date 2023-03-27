@@ -79,13 +79,12 @@
       </div>
     </div>
     <div class="empty-state" v-show="loaded && items.length <= 0">
-      <v-img
-        :src="require('@/assets/imgs/no-data.svg')"
-        :lazy-src="require('@/assets/imgs/no-data.svg')"
+      <nuxt-img
+        src="/imgs/no-data.svg"
         width="500"
         height="500"
-        class="mx-auto"
-      ></v-img>
+        class="mx-auto d-block"
+      ></nuxt-img>
     </div>
   </section>
 </template>

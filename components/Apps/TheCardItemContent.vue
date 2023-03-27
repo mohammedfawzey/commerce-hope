@@ -5,33 +5,11 @@
     flat
   >
     <v-row>
-      <!-- The_image -->
       <v-col cols="12" md="6" class="d-flex flex-column gap-15">
-        <!-- <div
-          class="the_image mx-auto"
-          :style="[
-            $vuetify.breakpoint.smAndDown
-              ? { 'max-width': '66.6667%' }
-              : { 'max-width': '85.6667%' },
-          ]"
-        > -->
-        <!-- contain -->
-        <!-- width="315" -->
-        <!-- max-height="315" -->
-        <!-- aspect-ratio="0.6728571428571428" -->
-        <v-img
-          aspect-ratio="1"
+        <nuxt-img
           class="image-border rounded-lg mx-auto"
-          :src="require(`@/assets/imgs/products/${C_item.img || 3}.png`)"
-          :max-width="$vuetify.breakpoint.smAndDown ? '66.6667%' : '85.6667%'"
-          width="100%"
-          max-height="534"
-          :lazy-src="require(`@/assets/imgs/products/${C_item.img || 3}.png`)"
+          :src="`/imgs/products/${C_item.img || 3}.png`"
         >
-          <!-- max-height="66.6667%" -->
-          <!-- max-height="534"
-          max-width="534" -->
-          <!-- contain -->
           <v-card-text>
             <v-chip label small color="error lighten-5">
               <span
@@ -45,22 +23,15 @@
               >
             </v-chip>
           </v-card-text>
-        </v-img>
-        <!-- </div> -->
+        </nuxt-img>
         <div class="mini-images mt-3 d-flex align-center justify-center">
           <div class="box-image">
-            <v-img
-              v-ripple
-              :src="require(`@/assets/imgs/products/${C_item.img || 1}.png`)"
-              :lazy-src="
-                require(`@/assets/imgs/products/${C_item.img || 1}.png`)
-              "
+            <nuxt-img
+              :src="`/imgs/products/${C_item.img || 1}.png`"
               class="active-mini-image pointer rounded-lg"
               width="60"
-              aspect-ratio="1"
-            ></v-img>
-            <!-- contain -->
-            <!-- width="72" -->
+              :placeholder="[60, 60, 5]"
+            ></nuxt-img>
           </div>
         </div>
       </v-col>
@@ -389,5 +360,9 @@ $box-size: 16px;
   box-shadow: rgb(145 158 171 / 20%) 0px 11px 15px -7px,
     rgb(145 158 171 / 14%) 0px 24px 38px 3px,
     rgb(145 158 171 / 12%) 0px 9px 46px 8px !important;
+}
+img {
+  width: 100%;
+  max-width: 500px;
 }
 </style>

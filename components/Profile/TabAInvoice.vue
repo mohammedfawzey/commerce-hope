@@ -1,11 +1,16 @@
 <template>
-  <div class="with-invoices" v-if="$store.state.S_invoices.length >= 1 || true">
-    <v-simple-table height="300px" class="pt-3 pt-md-0 hidden-sm-and-down">
+  <div class="with-invoices" v-if="$store.state.S_invoices.length >= 1">
+    <v-simple-table
+      fixed-header
+      height="300"
+      class="pt-3 pt-md-0 hidden-sm-and-down"
+    >
       <template v-slot:default>
         <thead>
           <tr class="bg-shape">
             <th
               class="text-capitalize white--text"
+              style="background: #093be5 !important"
               :class="item.class"
               v-for="(item, itemInd) in invoiceItemsModel"
               :key="itemInd"
@@ -19,15 +24,11 @@
             <td>
               <div class="d-flex align-center" style="max-width: 240px">
                 <v-avatar size="45" class="rounded-lg">
-                  <v-img
-                    :src="
-                      require(`@/assets/imgs/products/${item.product.img}.png`)
-                    "
-                    :lazy-src="
-                      require(`@/assets/imgs/products/${item.product.img}.png`)
-                    "
-                    aspect-ratio="1"
-                  ></v-img>
+                  <nuxt-img
+                    width="45"
+                    height="45"
+                    :src="`/imgs/products/${item.product.img}.png`"
+                  ></nuxt-img>
                   <!-- width="45"
                   height="45" -->
                 </v-avatar>
@@ -118,7 +119,7 @@
                 <v-icon small color="black" class="mr-1"
                   >mdi-calendar-range</v-icon
                 >
-                <span class="text-caption text-small">{{ item.date }}</span>
+                <span class="text-caption text-small">{{ $vuetify.breakpoint.smAndDown? item.date.substr(0,9):item.text }}</span>
               </div>
             </div>
             <div class="statue-chip">
@@ -144,12 +145,11 @@
     </v-card>
   </div>
   <div v-else>
-    <v-img
-      :src="require('@/assets/imgs/no-data.svg')"
-      :lazy-src="require('@/assets/imgs/no-data.svg')"
-      class="mx-auto"
-      max-width="400"
-    ></v-img>
+    <nuxt-img
+      src="/imgs/no-data.svg"
+      class="mx-auto fill-width d-block"
+      style="max-width: 400px"
+    ></nuxt-img>
   </div>
 </template>
 

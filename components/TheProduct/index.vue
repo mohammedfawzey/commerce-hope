@@ -50,9 +50,8 @@ export default {
     products,
     C_item: {},
   }),
-  mounted() {
+  created() {
     this.getTheProduct();
-    console.log(this.C_item);
   },
   methods: {
     getTheProduct() {

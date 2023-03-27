@@ -12,13 +12,13 @@
             md="6"
             class="d-flex align-start align-md-center justify-center"
           >
-            <v-img
-              contain
-              :src="require('@/assets/imgs/home/b-preview/1.png')"
-              :lazy-src="require('@/assets/imgs/home/b-preview/1.png')"
-              height="100%"
-              class="rounded-lg zoom-img-on-hover border-img"
-            ></v-img>
+            <!-- height="100%" -->
+            <div class="overflow-hidden rounded-lg fill-width fill-height">
+              <nuxt-img
+                src="/imgs/home/b-preview/1.png"
+                class="rounded-lg fill-width zoom-img-on-hover border-img fill-height"
+              ></nuxt-img>
+            </div>
             <!-- max-width="580" -->
           </v-col>
           <v-col
@@ -27,19 +27,21 @@
             class="d-flex align-center justify-space-between flex-column"
           >
             <!-- max-width="580" -->
-            <v-img
-              max-height="266"
-              class="rounded-lg zoom-img-on-hover border-img"
-              :src="require('@/assets/imgs/home/b-preview/2.png')"
-              :lazy-src="require('@/assets/imgs/home/b-preview/2.png')"
-            ></v-img>
-            <!-- max-width="580" -->
-            <v-img
-              max-height="266"
-              class="mt-3 rounded-lg zoom-img-on-hover border-img"
-              :src="require('@/assets/imgs/home/b-preview/3.png')"
-              :lazy-src="require('@/assets/imgs/home/b-preview/3.png')"
-            ></v-img>
+            <div class="overflow-hidden rounded-lg fill-width">
+              <nuxt-img
+                src="/imgs/home/b-preview/2.png"
+                class="rounded-lg fill-width zoom-img-on-hover border-img fill-height"
+                style="max-height:266px"
+              ></nuxt-img>
+            </div>
+            <div class="overflow-hidden rounded-lg fill-width">
+              <nuxt-img
+                src="/imgs/home/b-preview/3.png"
+                class="rounded-lg fill-width zoom-img-on-hover border-img fill-height"
+                style="max-height:266px"
+
+              ></nuxt-img>
+            </div>
           </v-col>
         </v-row>
       </v-card>

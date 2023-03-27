@@ -85,13 +85,11 @@
                 >
                   <v-list-item-icon style="height: 40px" class="mr-3">
                     <v-avatar size="40">
-                      <v-img
-                        :src="require(`@/assets/imgs/products/${item.img}.png`)"
-                        :lazy-src="require(`@/assets/imgs/products/${item.img}.png`)"
+                      <nuxt-img
+                        :src="`/imgs/products/${item.img}.png`"
                         height="40"
                         width="40"
-                        aspect-ratio="1"
-                      ></v-img>
+                      ></nuxt-img>
                     </v-avatar>
                   </v-list-item-icon>
                   <v-list-item-content class="pa-0">
@@ -108,12 +106,12 @@
               </v-hover>
             </template>
           </v-list>
-          <v-img
-            :src="require('@/assets/imgs/no-data.svg')"
-            :lazy-src="require('@/assets/imgs/no-data.svg')"
+          <nuxt-img
+            src="/imgs/no-data.svg"
             v-if="C_items.length <= 0 && loaded"
-            max-height="calc(400px - 8px)"
-          ></v-img>
+            height="386"
+            class="mx-auto d-block"
+          ></nuxt-img>
         </v-card-text>
       </v-sheet>
       <v-card-text class="mt-auto pa-0 hidden-sm-and-up">

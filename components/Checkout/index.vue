@@ -203,7 +203,6 @@ export default {
       });
     },
     getUserInfo(value) {
-      console.log("value", value);
       this.userInfo = value;
     },
   },

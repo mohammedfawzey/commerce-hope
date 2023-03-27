@@ -5,7 +5,7 @@
       <span
         class="font-weight-medium text-body-1"
         style="color: rgb(99, 115, 129)"
-        >({{$store.state.S_cart.length}} Items)</span
+        >({{ $store.state.S_cart.length }} Items)</span
       >
     </div>
     <!-- with-items -->
@@ -43,19 +43,13 @@
                 <!-- image -->
                 <v-col cols="12" sm="4" lg="5">
                   <div class="pl-3 d-flex align-center">
-                    <v-img
-                      class="border-color pl-2 rounded-lg"
-                      :src="
-                        require(`@/assets/imgs/products/${item.product.img}.png`)
-                      "
-                      :lazy-src="
-                        require(`@/assets/imgs/products/${item.product.img}.png`)
-                      "
-                      aspect-ratio="1"
+                      <!-- class="border-color pl-2 rounded-lg contain__img" -->
+                    <nuxt-img
+                      class="border-color rounded-lg contain__img"
+                      :src="`/imgs/products/${item.product.img}.png`"
                       width="64"
-                      max-width="64"
-                      max-height="64"
-                    ></v-img>
+                      height="64"
+                    ></nuxt-img>
                     <!-- <div class="content d-flex align-center"> -->
                     <v-list-item-content class="ml-3">
                       <v-list-item-title
@@ -83,17 +77,11 @@
                   </div>
                 </v-col>
                 <!-- price -->
-                <v-col
-                  cols="2"
-                  class="hidden-xs-only d-sm-flex align-center"
-                >
+                <v-col cols="2" class="hidden-xs-only d-sm-flex align-center">
                   <span class="text-caption">US$ {{ item.product.price }}</span>
                 </v-col>
                 <!-- quantity -->
-                <v-col
-                  cols="2"
-                  class="d-none d-sm-flex align-center"
-                >
+                <v-col cols="2" class="d-none d-sm-flex align-center">
                   <div
                     class="quantity text-right"
                     style="max-width: 96px; width: 96px"
@@ -150,10 +138,7 @@
                   </div>
                 </v-col>
                 <!-- total price -->
-                <v-col
-                  cols="2"
-                  class="d-none d-sm-flex align-center"
-                >
+                <v-col cols="2" class="d-none d-sm-flex align-center">
                   <span class="text-caption"
                     >US$ {{ item.product.price * item.quantity }}</span
                   >
@@ -162,7 +147,11 @@
                 <v-col
                   cols="2"
                   lg="1"
-                  class="d-none d-sm-flex align-center justify-center justify-lg-start"
+                  class="
+                    d-none d-sm-flex
+                    align-center
+                    justify-center justify-lg-start
+                  "
                 >
                   <v-btn
                     icon
@@ -272,12 +261,12 @@
     </div>
     <!-- no-items -->
     <div class="no-item px-4 mt-8" v-else>
-      <v-img
-        :src="require('@/assets/imgs/no-item-in-cart.svg')"
-        :lazy-src="require('@/assets/imgs/no-item-in-cart.svg')"
-        class="mx-auto mt-10"
-        max-width="360"
-      ></v-img>
+      <nuxt-img
+        src="/imgs/no-item-in-cart.svg"
+        class="mx-auto mt-10 fill-width d-block"
+        style="max-width:360px"
+      ></nuxt-img>
+        <!-- max-width="360" -->
     </div>
   </v-stepper-content>
 </template>
