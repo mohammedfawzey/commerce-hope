@@ -39,7 +39,7 @@
       <!-- aspect-ratio="2.4870466321243523" -->
       <!-- eager -->
       <!-- contain -->
-      <nuxt-img
+      <nuxt-img  format="webp"
         src="/imgs/home/c-top-collections/view.png"
         class="rounded-lg zoom-img-on-hover fill-width"
         style="min-height:160px; object-fit:cover"

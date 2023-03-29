@@ -44,7 +44,7 @@
                 <v-col cols="12" sm="4" lg="5">
                   <div class="pl-3 d-flex align-center">
                       <!-- class="border-color pl-2 rounded-lg contain__img" -->
-                    <nuxt-img
+                    <nuxt-img  format="webp"
                       class="border-color rounded-lg contain__img"
                       :src="`/imgs/products/${item.product.img}.png`"
                       width="64"
@@ -261,7 +261,7 @@
     </div>
     <!-- no-items -->
     <div class="no-item px-4 mt-8" v-else>
-      <nuxt-img
+      <nuxt-img  format="webp"
         src="/imgs/no-item-in-cart.svg"
         class="mx-auto mt-10 fill-width d-block"
         style="max-width:360px"

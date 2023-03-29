@@ -1,6 +1,5 @@
 <template>
   <v-app style="background-color: #f3f4f8">
-    <!-- <nuxt-img src="/imgs/home/a-landing/1.png"></nuxt-img> -->
     <AppsTheHeader />
     <v-main class="pt-0 pt-md-16">
       <AppsTheSearch />

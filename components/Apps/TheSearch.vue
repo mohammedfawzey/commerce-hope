@@ -87,6 +87,7 @@
                     <v-avatar size="40">
                       <nuxt-img
                         :src="`/imgs/products/${item.img}.png`"
+                         format="webp"
                         height="40"
                         width="40"
                       ></nuxt-img>
@@ -107,6 +108,7 @@
             </template>
           </v-list>
           <nuxt-img
+           format="webp"
             src="/imgs/no-data.svg"
             v-if="C_items.length <= 0 && loaded"
             height="386"

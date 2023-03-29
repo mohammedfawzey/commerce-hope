@@ -6,8 +6,8 @@
   >
     <v-row>
       <v-col cols="12" md="6" class="d-flex flex-column gap-15">
-        <nuxt-img
-          class="image-border rounded-lg mx-auto"
+        <nuxt-img  format="webp"
+          class="image-border custom_img_width rounded-lg mx-auto"
           :src="`/imgs/products/${C_item.img || 3}.png`"
         >
           <v-card-text>
@@ -31,6 +31,9 @@
               class="active-mini-image pointer rounded-lg"
               width="60"
               :placeholder="[60, 60, 5]"
+              height="60"
+              format="webp"
+              style="max-width: 60px !important"
             ></nuxt-img>
           </div>
         </div>
@@ -361,7 +364,7 @@ $box-size: 16px;
     rgb(145 158 171 / 14%) 0px 24px 38px 3px,
     rgb(145 158 171 / 12%) 0px 9px 46px 8px !important;
 }
-img {
+img.custom_img_width {
   width: 100%;
   max-width: 500px;
 }

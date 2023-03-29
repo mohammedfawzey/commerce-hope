@@ -14,7 +14,7 @@
           >
             <!-- height="100%" -->
             <div class="overflow-hidden rounded-lg fill-width fill-height">
-              <nuxt-img
+              <nuxt-img  format="webp"
                 src="/imgs/home/b-preview/1.png"
                 class="rounded-lg fill-width zoom-img-on-hover border-img fill-height"
               ></nuxt-img>
@@ -28,14 +28,14 @@
           >
             <!-- max-width="580" -->
             <div class="overflow-hidden rounded-lg fill-width">
-              <nuxt-img
+              <nuxt-img  format="webp"
                 src="/imgs/home/b-preview/2.png"
                 class="rounded-lg fill-width zoom-img-on-hover border-img fill-height"
                 style="max-height:266px"
               ></nuxt-img>
             </div>
             <div class="overflow-hidden rounded-lg fill-width">
-              <nuxt-img
+              <nuxt-img  format="webp"
                 src="/imgs/home/b-preview/3.png"
                 class="rounded-lg fill-width zoom-img-on-hover border-img fill-height"
                 style="max-height:266px"

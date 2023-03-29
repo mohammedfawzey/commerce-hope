@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="empty-state" v-show="loaded && items.length <= 0">
-      <nuxt-img
+      <nuxt-img  format="webp"
         src="/imgs/no-data.svg"
         width="500"
         height="500"

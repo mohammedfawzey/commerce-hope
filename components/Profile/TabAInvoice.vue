@@ -24,7 +24,7 @@
             <td>
               <div class="d-flex align-center" style="max-width: 240px">
                 <v-avatar size="45" class="rounded-lg">
-                  <nuxt-img
+                  <nuxt-img  format="webp"
                     width="45"
                     height="45"
                     :src="`/imgs/products/${item.product.img}.png`"
@@ -145,7 +145,7 @@
     </v-card>
   </div>
   <div v-else>
-    <nuxt-img
+    <nuxt-img  format="webp"
       src="/imgs/no-data.svg"
       class="mx-auto fill-width d-block"
       style="max-width: 400px"

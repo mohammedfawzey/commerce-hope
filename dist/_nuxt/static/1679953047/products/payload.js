@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/products", {data:[{_img:{"/_ipx/s_500x500/imgs/no-data.svg":"\u002F_nuxt\u002Fimage\u002Fbc362e.svg"}}],fetch:{},mutations:[]});

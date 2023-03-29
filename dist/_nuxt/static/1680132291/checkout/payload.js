@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/checkout", {data:[{_img:{"/_ipx/f_webp/imgs/no-item-in-cart.svg":"\u002F_nuxt\u002Fimage\u002F60daeb.webp"}}],fetch:{},mutations:[]});

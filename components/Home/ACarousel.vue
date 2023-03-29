@@ -16,7 +16,8 @@
         :key="itemInd"
         transition="slide-x-transition"
       >
-        <nuxt-img
+        <nuxt-img  format="webp"
+        quality="100"
           style="
             user-select: none;
             width: 100%;
